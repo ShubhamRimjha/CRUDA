@@ -1,0 +1,106 @@
+{
+  "project_info": {
+    "project_number": "356930732858",
+    "firebase_url": "https://cruda-cbb45-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "cruda-cbb45",
+    "storage_bucket": "cruda-cbb45.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:356930732858:android:68a2e1d0f3fb2ad708c603",
+        "android_client_info": {
+          "package_name": "com.intern.crud"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "356930732858-gaaque175tsb9rge7vn552hoc352pf39.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKkKCe_aXbRPwEa3GyzMhHNPjazLmC288"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "356930732858-gaaque175tsb9rge7vn552hoc352pf39.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:356930732858:android:743040b868712c8008c603",
+        "android_client_info": {
+          "package_name": "com.intern.cruda"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "356930732858-gaaque175tsb9rge7vn552hoc352pf39.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKkKCe_aXbRPwEa3GyzMhHNPjazLmC288"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "356930732858-gaaque175tsb9rge7vn552hoc352pf39.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:356930732858:android:cfa6c0208ccc0c2c08c603",
+        "android_client_info": {
+          "package_name": "com.intern.crudapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "356930732858-n8p3mgr23k1qmis7qo6j9jlij6sefbu3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.intern.crudapp",
+            "certificate_hash": "626bf4e406aaaabdd15da66498a49397f49413dc"
+          }
+        },
+        {
+          "client_id": "356930732858-gaaque175tsb9rge7vn552hoc352pf39.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKkKCe_aXbRPwEa3GyzMhHNPjazLmC288"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "356930732858-gaaque175tsb9rge7vn552hoc352pf39.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
