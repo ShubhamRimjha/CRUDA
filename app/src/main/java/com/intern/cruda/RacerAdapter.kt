@@ -33,7 +33,7 @@ class RacerAdapter(
         holder.txtname.text = racer.rname
         holder.txtteam.text = racer.team
         holder.txtcar.text = racer.car
-        Picasso.get().load(racer.iurl).centerCrop().error(R.drawable.ic_action_add)
+        Picasso.get().load(racer.iurl).centerCrop().resize(100,100).error(R.drawable.ic_action_add)
             .into(holder.imgR)
     }
 }
