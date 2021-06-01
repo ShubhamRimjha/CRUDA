@@ -59,7 +59,7 @@ class AddDialog : AppCompatDialogFragment() {
 
         img_r.setOnClickListener {
             getContent.launch("image/*")
-
+            txt_desc.animate()
         }
 
 

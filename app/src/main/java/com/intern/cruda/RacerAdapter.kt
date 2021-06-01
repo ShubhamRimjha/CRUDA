@@ -5,12 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.android.material.imageview.ShapeableImageView
+import com.google.firebase.database.FirebaseDatabase
+import com.orhanobut.dialogplus.DialogPlus
+import com.orhanobut.dialogplus.ViewHolder
 import com.squareup.picasso.Picasso
 import dev.shreyaspatil.MaterialDialog.BottomSheetMaterialDialog
 
@@ -20,6 +24,10 @@ class RacerAdapter(
 ) :
     FirebaseRecyclerAdapter<Racer, RacerAdapter.RViewHolder>(options) {
 
+    lateinit var uName: EditText
+    lateinit var uTeam: EditText
+    lateinit var uCar: EditText
+    lateinit var btnEdit: Button
 
     class RViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var txtname: TextView = view.findViewById(R.id.txt_name)
@@ -47,8 +55,35 @@ class RacerAdapter(
         else holder.imgR.setImageResource(R.drawable.fia_logo)
 
         holder.editBtn.setOnClickListener {
+            val bDialog = DialogPlus.newDialog(holder.imgR.context)
+                .setContentHolder(ViewHolder(R.layout.layout_edit_dialog))
+                .setExpanded(
+                    true,
+                    400
+                ) // This will enable the expand feature, (similar to android L share dialog)
+                .create()
 
+            uName = it.findViewById(R.id.et_racer_name_edit)
+            uTeam = it.findViewById(R.id.et_racer_team_edit)
+            uCar = it.findViewById(R.id.et_racer_car_edit)
+            btnEdit = it.findViewById(R.id.btn_edit)
+
+            uName.setText(racer.rname)
+            uTeam.setText(racer.team)
+            uCar.setText(racer.car)
+
+            btnEdit.setOnClickListener {
+                val racerUpdated =
+                    Racer(uName.text.toString(), uTeam.text.toString(), uCar.text.toString())
+
+                FirebaseDatabase.getInstance().reference.child("Racers")
+                    .child(getRef(position).key.toString()).setValue(racerUpdated)
+
+            }
+
+            bDialog.show()
         }
+
 
         holder.deleteBtn.setOnClickListener {
 
@@ -57,6 +92,10 @@ class RacerAdapter(
                 .setMessage("Are you sure want to delete this file?")
                 .setCancelable(false)
                 .setPositiveButton("Delete") { dialogInterface, _ ->
+
+                    FirebaseDatabase.getInstance().reference.child("Racers")
+                        .child(getRef(position).key.toString()).removeValue()
+
                     Toast.makeText(
                         holder.imgR.context,
                         "Deleted!",
@@ -66,7 +105,7 @@ class RacerAdapter(
                 }
                 .setNegativeButton(
                     "Cancel"
-                ) { dialogInterface, which ->
+                ) { dialogInterface, _ ->
                     Toast.makeText(
                         holder.imgR.context,
                         "Cancelled!",

@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity(), AddDialog.AddDialogListener {
         recyclerView = findViewById(R.id.rv_main)
 
         fab.setOnClickListener {
-            fab.animate().withStartAction { openAddDialog() }.start()
+            fab.animate().withEndAction { openAddDialog() }.start()
         }
 
 
