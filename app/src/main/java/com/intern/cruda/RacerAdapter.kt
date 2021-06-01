@@ -59,14 +59,15 @@ class RacerAdapter(
                 .setContentHolder(ViewHolder(R.layout.layout_edit_dialog))
                 .setExpanded(
                     true,
-                    400
+                    800
                 ) // This will enable the expand feature, (similar to android L share dialog)
                 .create()
+            var hodlr = bDialog.holderView
 
-            uName = it.findViewById(R.id.et_racer_name_edit)
-            uTeam = it.findViewById(R.id.et_racer_team_edit)
-            uCar = it.findViewById(R.id.et_racer_car_edit)
-            btnEdit = it.findViewById(R.id.btn_edit)
+            uName = hodlr.findViewById(R.id.et_racer_name_edit)
+            uTeam = hodlr.findViewById(R.id.et_racer_team_edit)
+            uCar = hodlr.findViewById(R.id.et_racer_car_edit)
+            btnEdit = hodlr.findViewById(R.id.btn_dialog_edit)
 
             uName.setText(racer.rname)
             uTeam.setText(racer.team)

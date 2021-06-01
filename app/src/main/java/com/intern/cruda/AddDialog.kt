@@ -22,7 +22,7 @@ class AddDialog : AppCompatDialogFragment() {
     lateinit var btnAdd: Button
     lateinit var listener: AddDialogListener
     var imgurl = ""
-    lateinit var filepath: Uri
+    lateinit var filepath :Uri
 
 
     val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri ->
@@ -59,7 +59,6 @@ class AddDialog : AppCompatDialogFragment() {
 
         img_r.setOnClickListener {
             getContent.launch("image/*")
-            txt_desc.animate()
         }
 
 
@@ -82,6 +81,7 @@ class AddDialog : AppCompatDialogFragment() {
     }
 
     private fun imgUpload(): String { // Defining the child of storageReference
+        if (filepath == null) return imgurl
         val ref = FirebaseStorage.getInstance().reference.child("images/$rName-$rTeam")
         // adding listeners on upload or failure of image
         ref.putFile(filepath).addOnSuccessListener {
