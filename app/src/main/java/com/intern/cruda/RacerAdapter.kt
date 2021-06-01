@@ -1,14 +1,19 @@
 package com.intern.cruda
 
+import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.android.material.imageview.ShapeableImageView
 import com.squareup.picasso.Picasso
+import dev.shreyaspatil.MaterialDialog.BottomSheetMaterialDialog
+
 
 class RacerAdapter(
     options: FirebaseRecyclerOptions<Racer>
@@ -21,6 +26,8 @@ class RacerAdapter(
         var txtteam: TextView = view.findViewById(R.id.txt_team)
         var txtcar: TextView = view.findViewById(R.id.txt_car)
         var imgR: ShapeableImageView = view.findViewById(R.id.img_r)
+        var editBtn: Button = view.findViewById(R.id.btn_edit)
+        var deleteBtn: Button = view.findViewById(R.id.btn_delete)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RViewHolder {
@@ -38,5 +45,42 @@ class RacerAdapter(
             .error(R.drawable.ic_action_add)
             .into(holder.imgR)
         else holder.imgR.setImageResource(R.drawable.fia_logo)
+
+        holder.editBtn.setOnClickListener {
+
+        }
+
+        holder.deleteBtn.setOnClickListener {
+
+            val bDialog = BottomSheetMaterialDialog.Builder(holder.imgR.context as Activity)
+                .setTitle("Delete?")
+                .setMessage("Are you sure want to delete this file?")
+                .setCancelable(false)
+                .setPositiveButton("Delete") { dialogInterface, _ ->
+                    Toast.makeText(
+                        holder.imgR.context,
+                        "Deleted!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    dialogInterface.dismiss()
+                }
+                .setNegativeButton(
+                    "Cancel"
+                ) { dialogInterface, which ->
+                    Toast.makeText(
+                        holder.imgR.context,
+                        "Cancelled!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    dialogInterface.dismiss()
+                }.build()
+
+            // Show Dialog
+
+            // Show Dialog
+            bDialog.show()
+
+
+        }
     }
 }

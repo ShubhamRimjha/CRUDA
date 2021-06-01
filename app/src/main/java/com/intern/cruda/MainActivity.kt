@@ -1,6 +1,8 @@
 package com.intern.cruda
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -31,6 +33,9 @@ class MainActivity : AppCompatActivity(), AddDialog.AddDialogListener {
         supportActionBar?.setLogo(R.drawable.ic_action_wheel)
         title = "Formula Racers"
 
+
+
+
         fab = findViewById(R.id.fab)
         recyclerView = findViewById(R.id.rv_main)
 
@@ -46,6 +51,12 @@ class MainActivity : AppCompatActivity(), AddDialog.AddDialogListener {
             .build()
         adapter = RacerAdapter(options)
         recyclerView.adapter = adapter
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.AboutMe)
+            startActivity(Intent(this@MainActivity, AboutActivity::class.java))
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onStart() {
