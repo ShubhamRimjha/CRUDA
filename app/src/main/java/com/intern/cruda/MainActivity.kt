@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity(), AddDialog.AddDialogListener {
         supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.isHideOnContentScrollEnabled
-
+        supportActionBar?.setLogo(R.drawable.ic_action_wheel)
         title = "Formula Racers"
 
         fab = findViewById(R.id.fab)
