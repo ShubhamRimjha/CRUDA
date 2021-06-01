@@ -28,13 +28,14 @@ class MainActivity : AppCompatActivity(), AddDialog.AddDialogListener {
         supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.isHideOnContentScrollEnabled
+
         title = "Formula Racers"
 
         fab = findViewById(R.id.fab)
         recyclerView = findViewById(R.id.rv_main)
 
         fab.setOnClickListener {
-            fab.animate().rotationBy(180F).setDuration(180).withStartAction { openAddDialog() } .start()
+            fab.animate().withStartAction { openAddDialog() }.start()
         }
 
 

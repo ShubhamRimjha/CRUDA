@@ -23,7 +23,8 @@
             @drawable/splash_bg
         </item>
     </style>
-    <style name="MyCustomTheme" parent="@android:style/Theme.Panel">
+
+    <style name="MyCustomTheme" parent="Animation.Design.BottomSheetDialog">
         <item name="android:windowAnimationStyle">@style/MyAnimation.Window</item>
     </style>
 
