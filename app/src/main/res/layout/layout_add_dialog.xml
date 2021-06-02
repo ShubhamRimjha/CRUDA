@@ -48,17 +48,15 @@
             android:maxLines="1"
             android:scaleType="centerInside" />
 
-        <com.google.android.material.progressindicator.LinearProgressIndicator
+        <ProgressBar
             android:id="@+id/pb_img_upload"
             android:layout_width="150dp"
             android:layout_height="5dp"
             android:layout_gravity="center"
-            android:theme="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            app:indeterminateAnimationType="contiguous"
-            app:indicatorColor="#F40505"
-            app:indicatorDirectionLinear="startToEnd"
-            app:trackColor="#BA7E7E"
-            app:trackThickness="5dp" />
+            android:outlineSpotShadowColor="@color/black"
+            android:theme="@style/Widget.MaterialComponents.LinearProgressIndicator"
+
+            />
 
         <TextView
             android:id="@+id/txt_desc"

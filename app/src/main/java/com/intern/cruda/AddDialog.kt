@@ -20,7 +20,7 @@ class AddDialog : AppCompatDialogFragment() {
     lateinit var txt_desc: TextView
     lateinit var rCar: EditText
     lateinit var img_r: ImageView
-    lateinit var progressBar: LinearProgressIndicator
+    lateinit var progressBar: ProgressBar
     lateinit var btnAdd: Button
     lateinit var listener: AddDialogListener
 

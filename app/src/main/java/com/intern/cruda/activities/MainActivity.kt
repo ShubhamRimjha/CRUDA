@@ -31,8 +31,9 @@ class MainActivity : AppCompatActivity(), AddDialog.AddDialogListener {
         toolbar = findViewById(R.id.toolbar)
 
         setSupportActionBar(toolbar)
-        supportActionBar?.isHideOnContentScrollEnabled
-        supportActionBar?.setLogo(R.drawable.ic_action_wheel)
+        supportActionBar?.setDisplayShowCustomEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_action_wheel)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         title = "Formula Racers"
 
 
@@ -56,8 +57,11 @@ class MainActivity : AppCompatActivity(), AddDialog.AddDialogListener {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.AboutMe)
+        if (item.itemId == R.id.AboutMe) {
             startActivity(Intent(this@MainActivity, AboutActivity::class.java))
+            overridePendingTransition(R.anim.screen_in, R.anim.screen_out)
+            finishAfterTransition()
+        }
         return super.onOptionsItemSelected(item)
     }
 

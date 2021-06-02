@@ -123,8 +123,6 @@ class RacerAdapter(
                 }.build()
 
             // Show Dialog
-
-            // Show Dialog
             bDialog.show()
 
 
