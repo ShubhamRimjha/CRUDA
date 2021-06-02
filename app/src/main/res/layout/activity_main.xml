@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".activities.MainActivity">
 
-    <include
-        layout="@layout/toolbar" />
+    <include layout="@layout/toolbar" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_main"
@@ -30,5 +29,21 @@
         android:layout_margin="20dp"
         android:layoutAnimation="@anim/fav_rotate"
         android:src="@drawable/ic_action_add" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/me_img_smol"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignStart="@id/fab"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="8dp"
+        android:padding="5dp"
+        android:scaleType="fitXY"
+        android:transitionName="profile"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+        app:srcCompat="@drawable/me_icon"
+        app:strokeColor="@color/white"
+        app:strokeWidth="1dp" />
+
 
 </RelativeLayout>

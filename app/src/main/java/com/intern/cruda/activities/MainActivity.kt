@@ -2,13 +2,14 @@ package com.intern.cruda.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.imageview.ShapeableImageView
 import com.google.firebase.database.FirebaseDatabase
 import com.intern.cruda.AddDialog
 import com.intern.cruda.R
@@ -22,27 +23,39 @@ class MainActivity : AppCompatActivity(), AddDialog.AddDialogListener {
     private lateinit var fab: FloatingActionButton
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: RacerAdapter
+    private lateinit var picbtn: ShapeableImageView
     private lateinit var toolbar: Toolbar
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         toolbar = findViewById(R.id.toolbar)
+        fab = findViewById(R.id.fab)
+        picbtn = findViewById(R.id.me_img_smol)
 
         setSupportActionBar(toolbar)
         supportActionBar?.title = "Racers"
-        supportActionBar?.
 
-
-
-        fab = findViewById(R.id.fab)
         recyclerView = findViewById(R.id.rv_main)
 
         fab.setOnClickListener {
             fab.animate().withEndAction { openAddDialog() }.start()
         }
 
+        picbtn.setOnClickListener {
+            val AboutIntent = Intent(this@MainActivity, AboutActivity::class.java)
+            val options =
+                ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    this@MainActivity,
+                    picbtn,
+                    picbtn.transitionName
+                )
+            // pass your bundle data
+            startActivity(AboutIntent, options.toBundle())
+            overridePendingTransition(R.anim.anim_in, R.anim.screen_out)
+        }
 
         recyclerView.layoutManager = LinearLayoutManager(this)
 
@@ -53,14 +66,6 @@ class MainActivity : AppCompatActivity(), AddDialog.AddDialogListener {
         recyclerView.adapter = adapter
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.AboutMe) {
-            startActivity(Intent(this@MainActivity, AboutActivity::class.java))
-            overridePendingTransition(R.anim.screen_in, R.anim.screen_out)
-            finishAfterTransition()
-        }
-        return super.onOptionsItemSelected(item)
-    }
 
     override fun onStart() {
         super.onStart()

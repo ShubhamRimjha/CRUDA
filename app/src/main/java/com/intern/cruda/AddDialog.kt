@@ -7,11 +7,14 @@ import android.graphics.ImageDecoder
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.view.View
+import android.view.ViewGroup
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatDialogFragment
-import com.google.android.material.progressindicator.LinearProgressIndicator
 import com.google.firebase.storage.FirebaseStorage
+import com.transitionseverywhere.TransitionManager
+
 
 class AddDialog : AppCompatDialogFragment() {
 
@@ -65,6 +68,9 @@ class AddDialog : AppCompatDialogFragment() {
 
         img_r.setOnClickListener {
             getContent.launch("image/*")
+            TransitionManager.beginDelayedTransition(view as ViewGroup)
+            txt_desc.setVisibility(View.GONE)
+
         }
 
 

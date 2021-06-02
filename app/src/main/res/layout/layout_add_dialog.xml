@@ -3,8 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="20dp"
     android:padding="20dp"
-    app:cardCornerRadius="5dp">
+    android:theme="@style/Theme.MaterialComponents.Light.Dialog.Alert.Bridge"
+    app:cardCornerRadius="10dp"
+    app:strokeColor="@color/white">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -48,10 +51,11 @@
             android:maxLines="1"
             android:scaleType="centerInside" />
 
-        <ProgressBar
+        <androidx.core.widget.ContentLoadingProgressBar
             android:id="@+id/pb_img_upload"
             android:layout_width="150dp"
             android:layout_height="5dp"
+
             android:layout_gravity="center"
             android:outlineSpotShadowColor="@color/black"
             android:theme="@style/Widget.MaterialComponents.LinearProgressIndicator"
@@ -70,7 +74,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="@string/add" />
+            android:backgroundTint="@color/main"
+            android:text="@string/add"
+            android:textColor="@color/black"
+            android:theme="@style/Widget.AppCompat.Button.Borderless.Colored" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 </com.google.android.material.card.MaterialCardView>

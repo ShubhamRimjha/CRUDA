@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,102 +10,109 @@
     android:orientation="vertical"
     tools:context=".activities.AboutActivity">
 
-    <include layout="@layout/toolbar" />
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/me_img"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_margin="20dp"
-            android:padding="10dp"
-            android:scaleType="fitXY"
-            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
-            app:srcCompat="@drawable/me_icon" />
+        <include layout="@layout/toolbar" />
 
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignTop="@id/me_img"
-            android:layout_alignBottom="@id/me_img"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@+id/me_img"
-            android:textSize="17sp"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-            <TableRow
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/me_img"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_margin="20dp"
+                android:padding="10dp"
+                android:scaleType="fitXY"
+                android:transitionName="profile"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                app:srcCompat="@drawable/me_icon" />
+
+            <TableLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal">
+                android:layout_height="match_parent"
+                android:layout_marginTop="70dp"
+                android:textSize="17sp"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-                <TextView
-                    android:id="@+id/textName"
-                    android:layout_width="wrap_content"
+                <TableRow
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Shubham Rimjha"
-                    android:textSize="19sp"
-                    android:textStyle="bold" />
+                    android:gravity="center_horizontal">
 
-            </TableRow>
+                    <TextView
+                        android:id="@+id/textName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Shubham Rimjha"
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal">
+                </TableRow>
 
-                <TextView
-                    android:id="@+id/textContact"
-                    android:layout_width="wrap_content"
+                <TableRow
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="shubhamrim@gmail.com" />
+                    android:gravity="center_horizontal">
+
+                    <TextView
+                        android:id="@+id/textContact"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="shubhamrim@gmail.com" />
 
 
-            </TableRow>
+                </TableRow>
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal">
-
-                <TextView
-                    android:id="@+id/textphone"
-                    android:layout_width="wrap_content"
+                <TableRow
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="+91-9993571716" />
-            </TableRow>
+                    android:gravity="center_horizontal">
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal">
+                    <TextView
+                        android:id="@+id/textphone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="+91-9993571716" />
+                </TableRow>
 
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
+                <TableRow
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Jabalpur Engineering College"
-                    android:textSize="12sp" />
-            </TableRow>
-        </TableLayout>
+                    android:gravity="center_horizontal">
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Jabalpur Engineering College"
+                        android:textSize="12sp" />
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/me_img"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:padding="5dp"
             android:text="@string/about"
-            android:textSize="15sp" />
+            android:textAlignment="textStart"
+            android:textSize="16sp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/me_img"
-            android:gravity="bottom|end"
-            android:padding="5dp"
-            android:text="@string/click"
-            android:textSize="15sp" />
-    </RelativeLayout>
-</LinearLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/expanded_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="Touch to close"
+        android:visibility="invisible" />
+</FrameLayout>
