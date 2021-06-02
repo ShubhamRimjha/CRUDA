@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatDialogFragment
+import com.google.android.material.progressindicator.LinearProgressIndicator
 import com.google.firebase.storage.FirebaseStorage
 
 class AddDialog : AppCompatDialogFragment() {
@@ -19,26 +20,30 @@ class AddDialog : AppCompatDialogFragment() {
     lateinit var txt_desc: TextView
     lateinit var rCar: EditText
     lateinit var img_r: ImageView
+    lateinit var progressBar: LinearProgressIndicator
     lateinit var btnAdd: Button
     lateinit var listener: AddDialogListener
-    var imgurl = ""
-    lateinit var filepath :Uri
+
+    var imgurl = "gs://cruda-cbb45.appspot.com/place_holder.png"
+    var imgUploadflag = false
 
 
-    val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri ->
+    private val getContent =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri ->
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-            val img = ImageDecoder.decodeBitmap(
-                ImageDecoder.createSource(
-                    requireContext().contentResolver,
-                    uri
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                val img = ImageDecoder.decodeBitmap(
+                    ImageDecoder.createSource(
+                        requireContext().contentResolver,
+                        uri
+                    )
                 )
-            )
-            img_r.setImageBitmap(img)
+                img_r.setImageBitmap(img)
+                imgUploadflag = true
+            }
+            imgUpload(uri)
+            Toast.makeText(context, "Img selected $uri", Toast.LENGTH_SHORT).show()
         }
-        filepath = uri
-        Toast.makeText(context, "Img uploaded to cloud storage $uri", Toast.LENGTH_SHORT).show()
-    }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
@@ -56,6 +61,7 @@ class AddDialog : AppCompatDialogFragment() {
         btnAdd = view.findViewById(R.id.btn_add)
         img_r = view.findViewById(R.id.iv_dialog_pic)
         txt_desc = view.findViewById(R.id.txt_desc)
+        progressBar = view.findViewById(R.id.pb_img_upload)
 
         img_r.setOnClickListener {
             getContent.launch("image/*")
@@ -70,36 +76,48 @@ class AddDialog : AppCompatDialogFragment() {
                     rName.text.toString(),
                     rTeam.text.toString(),
                     rCar.text.toString(),
-                    imgUpload()
+                    imgurl
                 )
                 listener.saveRacer(racer)
-                this.dismiss()
+
+                Toast.makeText(
+                    context,
+                    "New Driver Added!",
+                    Toast.LENGTH_SHORT
+                ).show()
+
             }
+            this.dismiss()
         }
 
         return builder.create()
     }
 
-    private fun imgUpload(): String { // Defining the child of storageReference
-        if (filepath == null) return imgurl
-        val ref = FirebaseStorage.getInstance().reference.child("images/$rName-$rTeam")
+    private fun imgUpload(uri: Uri): String {
+
+        val ref =
+            FirebaseStorage.getInstance().reference.child("images")
+                .child("${rName.text}_${rTeam.text}")
         // adding listeners on upload or failure of image
-        ref.putFile(filepath).addOnSuccessListener {
-            // Image uploaded successfully
-            Toast.makeText(
-                context,
-                "Image Uploaded!!",
-                Toast.LENGTH_SHORT
-            ).show()
-            imgurl = ref.path
-        }.addOnFailureListener {
-            // Error, Image not uploaded
-            Toast.makeText(
-                context,
-                "Failed $it",
-                Toast.LENGTH_SHORT
-            ).show()
-        }
+        ref.putFile(uri)
+            .addOnProgressListener {
+                var progress = 100 * it.bytesTransferred / it.totalByteCount
+                progressBar.progress = progress.toInt()
+            }
+            .addOnSuccessListener {
+                // Image uploaded successfully
+//                Toast.makeText(
+//                    context, "Image Uploaded!!", Toast.LENGTH_SHORT
+//                ).show()
+
+                imgurl = ref.downloadUrl.toString()
+
+            }.addOnFailureListener {
+                // Error, Image not uploaded
+                Toast.makeText(
+                    context, "Failed $it", Toast.LENGTH_SHORT
+                ).show()
+            }
         return imgurl
     }
 

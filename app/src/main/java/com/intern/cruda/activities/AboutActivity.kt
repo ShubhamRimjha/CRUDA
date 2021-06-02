@@ -1,8 +1,9 @@
-package com.intern.cruda
+package com.intern.cruda.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import com.intern.cruda.R
 
 class AboutActivity : AppCompatActivity() {
 

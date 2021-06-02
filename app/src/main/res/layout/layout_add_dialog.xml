@@ -11,6 +11,31 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+
+        <EditText
+            android:id="@+id/et_racer_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:hint="@string/name" />
+
+        <EditText
+            android:id="@+id/et_racer_team"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:hint="@string/team"
+            android:maxLines="1" />
+
+        <EditText
+            android:id="@+id/et_racer_car"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:hint="@string/car"
+            android:maxLines="1" />
+
+
         <ImageView
             android:id="@+id/iv_dialog_pic"
             android:layout_width="150dp"
@@ -19,47 +44,35 @@
             android:layout_marginTop="20dp"
             android:alpha=".9"
             android:background="@drawable/fia_logo"
-            android:contentDescription="Picture"
+            android:contentDescription="@string/picture"
             android:maxLines="1"
             android:scaleType="centerInside" />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/pb_img_upload"
+            android:layout_width="150dp"
+            android:layout_height="5dp"
+            android:layout_gravity="center"
+            android:theme="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            app:indeterminateAnimationType="contiguous"
+            app:indicatorColor="#F40505"
+            app:indicatorDirectionLinear="startToEnd"
+            app:trackColor="#BA7E7E"
+            app:trackThickness="5dp" />
 
         <TextView
             android:id="@+id/txt_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Click to Upload Image" />
-
-        <EditText
-            android:id="@+id/et_racer_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:hint="Name" />
-
-        <EditText
-            android:id="@+id/et_racer_team"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:hint="Team"
-            android:maxLines="1" />
-
-        <EditText
-            android:id="@+id/et_racer_car"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:hint="Car"
-            android:maxLines="1" />
+            android:text="@string/click_to_upload_image" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_add"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="Add" />
-
+            android:text="@string/add" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 </com.google.android.material.card.MaterialCardView>

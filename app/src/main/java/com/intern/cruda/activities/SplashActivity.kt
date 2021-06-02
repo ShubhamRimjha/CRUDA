@@ -1,19 +1,21 @@
-package com.intern.cruda
+package com.intern.cruda.activities
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.intern.cruda.R
 import java.util.*
 import kotlin.concurrent.schedule
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_splash)
 
-        Timer().schedule(2000) {
+
+        Timer().schedule(3000) {
             startActivity(Intent(this@SplashActivity, MainActivity::class.java))
             finish()
         }
-
     }
 }

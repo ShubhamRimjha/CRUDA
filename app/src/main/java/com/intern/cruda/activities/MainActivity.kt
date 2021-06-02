@@ -1,4 +1,4 @@
-package com.intern.cruda
+package com.intern.cruda.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,6 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.database.FirebaseDatabase
+import com.intern.cruda.AddDialog
+import com.intern.cruda.R
+import com.intern.cruda.Racer
+import com.intern.cruda.RacerAdapter
 import java.util.*
 
 
@@ -27,8 +31,6 @@ class MainActivity : AppCompatActivity(), AddDialog.AddDialogListener {
         toolbar = findViewById(R.id.toolbar)
 
         setSupportActionBar(toolbar)
-        supportActionBar?.setHomeButtonEnabled(true)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.isHideOnContentScrollEnabled
         supportActionBar?.setLogo(R.drawable.ic_action_wheel)
         title = "Formula Racers"

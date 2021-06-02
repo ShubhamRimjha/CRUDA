@@ -50,7 +50,7 @@ class RacerAdapter(
         holder.txtcar.text = racer.car
 
         if (racer.iurl.isNotBlank()) Picasso.get().load(racer.iurl).centerCrop().resize(100, 100)
-            .error(R.drawable.ic_action_add)
+            .error(R.drawable.fia_logo)
             .into(holder.imgR)
         else holder.imgR.setImageResource(R.drawable.fia_logo)
 
@@ -79,6 +79,13 @@ class RacerAdapter(
 
                 FirebaseDatabase.getInstance().reference.child("Racers")
                     .child(getRef(position).key.toString()).setValue(racerUpdated)
+                    .addOnSuccessListener {
+                        Toast.makeText(hodlr.context, "Updated!", Toast.LENGTH_SHORT).show()
+                    }.addOnFailureListener {
+                        Toast.makeText(hodlr.context, "Error $it", Toast.LENGTH_SHORT).show()
+                    }
+                bDialog.dismiss()
+
 
             }
 
