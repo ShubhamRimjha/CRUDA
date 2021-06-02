@@ -5,6 +5,5 @@
         android:id="@+id/AboutMe"
         android:icon="@drawable/ic_action_party"
         android:title="Me"
-        android:visible="true"
         app:showAsAction="always" />
 </menu>

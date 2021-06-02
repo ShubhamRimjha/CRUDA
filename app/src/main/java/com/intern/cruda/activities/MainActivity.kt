@@ -31,11 +31,8 @@ class MainActivity : AppCompatActivity(), AddDialog.AddDialogListener {
         toolbar = findViewById(R.id.toolbar)
 
         setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayShowCustomEnabled(true)
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_action_wheel)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        title = "Formula Racers"
-
+        supportActionBar?.title = "Racers"
+        supportActionBar?.
 
 
 

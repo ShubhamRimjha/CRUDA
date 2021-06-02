@@ -31,8 +31,8 @@
             android:layout_height="match_parent"
             android:layout_alignTop="@id/me_img"
             android:layout_alignBottom="@id/me_img"
-            android:layout_marginTop="0dp"
-            android:layout_toRightOf="@+id/me_img"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/me_img"
             android:textSize="17sp"
             android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
@@ -90,5 +90,22 @@
                     android:textSize="12sp" />
             </TableRow>
         </TableLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/me_img"
+            android:padding="5dp"
+            android:text="@string/about"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/me_img"
+            android:gravity="bottom|end"
+            android:padding="5dp"
+            android:text="@string/click"
+            android:textSize="15sp" />
     </RelativeLayout>
 </LinearLayout>

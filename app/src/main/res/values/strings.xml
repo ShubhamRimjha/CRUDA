@@ -6,4 +6,6 @@
     <string name="team">Team</string>
     <string name="name">Name</string>
     <string name="picture">Picture</string>
+    <string name="about">Heya, I am Shubham Rimjha, a 3rd CSE student from jabalpur engineering college. I love reading trivia and manga. I also occasionally play games on the computer. I am learning about android for quiet sometime now but I must admit that this was my first time dealing with Realtime Db and Storage, Animations and a lot of third party libraries. The app seems to work but is still extremely buggy. I will try to make it better after this deadline…</string>
+    <string name="click">Click on my image to have a closer look.</string>
 </resources>
